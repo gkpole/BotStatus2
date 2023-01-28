@@ -12,19 +12,16 @@ from telethon import TelegramClient
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
-try:
-    appid = config("APP_ID")
-    apihash = config("API_HASH")
-    session = config("SESSION", default=None)
-    chnl_id = config("CHANNEL_ID", cast=int)
-    msg_id = config("MESSAGE_ID", cast=int)
-    botlist = config("BOTS")
-    bots = botlist.split()
-    session_name = str(session)
-    user_bot = TelegramClient(StringSession(session_name), appid, apihash)
-    print("Started")
-except Exception as e:
-    print(f"ERROR\n{str(e)}")
+appid = config("APP_ID")
+apihash = config("API_HASH")
+session = config("SESSION", default=None)
+chnl_id = config("CHANNEL_ID", cast=int)
+msg_id = config("MESSAGE_ID", cast=int)
+botlist = config("BOTS")
+bots = botlist.split()
+session_name = str(session)
+user_bot = TelegramClient(StringSession(session_name), appid, apihash)
+print("Started")
 
 async def BotzHub():
     async with user_bot:
